@@ -51,6 +51,7 @@ sequenceDiagram
 - Ability to export draft to MTGA, MTGO, or copy to clipboard
 - Ability to select the set the packs of the draft are from
 - Ability to select the number of players in the draft
+- Standard draft pick and pass play
 
 
 ### Technologies
