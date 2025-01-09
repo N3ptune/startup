@@ -39,9 +39,15 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure HTTPS login
+- Ability to create or join draft lobbies
+- Visual display of each card
+- Ability to pick cards to keep
+- Draft card lists stored and tied to account
+- Ability to export draft to MTGA, MTGO, or copy to clipboard
+- Ability to select the set the packs of the draft are from
+- Ability to select the number of players in the draft
+
 
 ### Technologies
 
