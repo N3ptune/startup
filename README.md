@@ -34,7 +34,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 sequenceDiagram
     actor You
     actor Website
-    You->>Website: Replace this with your design
+    actor User1
+    actor User2
+    actor Server
+    You->Website: Replace this with your design
 ```
 
 ### Key features
