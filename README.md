@@ -38,9 +38,10 @@ sequenceDiagram
     actor Website
     actor Server
     You->>Website: Plays in draft, makes card list
-    User1->>Server: Plays in draft, makes card list
-    User2->>Server: Plays in draft, makes card list
-    Website->>Server:Sends card list
+    User1->>Website: Plays in draft, makes card list
+    User2->>Website: Plays in draft, makes card list
+    Website->>Server: Sends card list
+    Server->>Website: Shows card list when query
 ```
 
 ### Key features
