@@ -32,12 +32,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ```mermaid
 sequenceDiagram
-    actor You
+    actor You actor User1
     actor Website
-    actor User1
     actor User2
     actor Server
-    You->Website: Replace this with your design
+    You->>Website: Replace this with your design
 ```
 
 ### Key features
