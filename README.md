@@ -32,11 +32,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ```mermaid
 sequenceDiagram
-    actor You actor User1
-    actor Website
+    actor You 
+    actor User1
     actor User2
+    actor Website
     actor Server
-    You->>Website: Replace this with your design
+    You->>Website: Plays in draft, makes card list
+    User1->>Server: Plays in draft, makes card list
+    User2->>Server: Plays in draft, makes card list
+    Website->>Server:Sends card list
 ```
 
 ### Key features
