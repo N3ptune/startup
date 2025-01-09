@@ -53,12 +53,16 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Uses proper HTML structure for application. 6 HTML pages. One for login, one for main page, one for lobby waiting room, one for drafting, one for deck storage, one for the deck list.
+- **CSS** - Application styling using neutral colors to not inhibit card visibility, mainly designed for desktop experience, good levels of reading.
+- **React** - Provides login, card choice and display, routing using React and JavaScript.
+- **Service** - Backend service for:
+    - draft creation/joining
+    - draft card list storage
+    - retrieving card lists
+    - displaying cards using [Scryfall API](https://api.scryfall.com)
+- **DB/Login** - Store users and card lists in database, register and login users, securely store credentials, authenticate users before draft elegible.
+- **WebSocket** - As each user picks cards the remaining cards from that pack are sent to the next user.
 
 ## 🚀 AWS deliverable
 
