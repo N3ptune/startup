@@ -4,7 +4,7 @@
     <body>
         <header>
             <h1>
-                "DraftMagic"
+                DraftMagic
             </h1>
             <nav>
                 <menu>
@@ -23,7 +23,37 @@
                 </menu>
             </nav>
         </header>
-        <main></main>
+        <main>
+            <h2>
+                Your Decks
+            </h2>
+            <canvas id="Deck1" width="50" height="50" style="border: 1px solid #000000"></canvas>
+            <script>
+                const ctx = document.getElementById('Deck1').getContext('2d');
+                ctx.beginPath();
+                ctx.arc(25, 24, 6, 0, 2 * Math.PI);
+                ctx.fillStyle = 'blue';
+                ctx.strokeStyle = 'blue';
+                ctx.fill();
+                ctx.stroke();
+            </script>
+            <form method = "get" action = "decklist.html">
+                <button type = "submit">Deck 1: Blue</button>
+            </form>
+            <canvas id="Deck2" width="50" height="50" style="border: 1px solid #000000"></canvas>
+            <script>
+                const ctx = document.getElementById('Deck2').getContext('2d');
+                ctx.beginPath();
+                ctx.arc(25, 24, 6, 0, 2 * Math.PI);
+                ctx.fillStyle = 'red';
+                ctx.strokeStyle = 'red';
+                ctx.fill();
+                ctx.stroke();
+            </script>
+            <form method = "get" action = "decklist.html">
+                <button type = "submit">Deck 2: Red</button>
+            </form>
+        </main>
         <footer>
             <hr>
             <p>Jason Brooks</p>
