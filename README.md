@@ -79,15 +79,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I added index, lobby, draft, decklist, decks, and about HTML. Two are only reachable through pages. Draft through the join button on Lobby and decks through the deck buttons on decklist
+- [x] **Proper HTML element usage** - I used proper formatting for HTML elements
+- [x] **Links** - I added necessary links between pages of the website
+- [x] **Text** - I applied proper contextual text formatting
+- [x] **3rd party API placeholder** - I have images as the 3rd part api placeholder on the draft html page
+- [x] **Images** - I dadded images to draft
+- [x] **Login placeholder** - I have login placeholder on index
+- [x] **DB data placeholder** - I have DB data placeholder on decklist, the decks are what is stored
+- [x] **WebSocket placeholder** - I have WebSocket placeholder on lobby with chat, and draft wherethe cards are what is sent through the WebSocket
 
 ## 🚀 CSS deliverable
 
