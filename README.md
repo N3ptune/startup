@@ -93,12 +93,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - Formatted all header, footer, and main content
+- [x] **Navigation elements** - Properly formatted the navigation elements
+- [x] **Responsive to window resizing** - Made as responsive as possible to window resizing, Lobby was especially hard
+- [x] **Application elements** - Basically made everything a grid and used containers to make it all look nice
+- [x] **Application text content** - I put most everything in the same kind of container as far as text in concerned
+- [x] **Application images** - Used a grid to make these resize properly with the window
 
 ## 🚀 React part 1: Routing deliverable
 
