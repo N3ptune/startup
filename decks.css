@@ -1,0 +1,13 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-gap: 1em;
+    grid-auto-rows: minmax(200px, auto);
+}
+
+.deck-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }

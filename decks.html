@@ -34,32 +34,40 @@
             <h2>
                 Your Decks
             </h2>
-            <canvas id="Deck1" width="50" height="50" style="border: 1px solid #000000"></canvas>
-            <script>
-                const ctx = document.getElementById('Deck1').getContext('2d');
-                ctx.beginPath();
-                ctx.arc(25, 24, 6, 0, 2 * Math.PI);
-                ctx.fillStyle = 'blue';
-                ctx.strokeStyle = 'blue';
-                ctx.fill();
-                ctx.stroke();
-            </script>
-            <form method = "get" action = "decklist.html">
-                <button type = "submit">Deck 1: Blue</button>
-            </form>
-            <canvas id="Deck2" width="50" height="50" style="border: 1px solid #000000"></canvas>
-            <script>
-                const ctx = document.getElementById('Deck2').getContext('2d');
-                ctx.beginPath();
-                ctx.arc(25, 24, 6, 0, 2 * Math.PI);
-                ctx.fillStyle = 'red';
-                ctx.strokeStyle = 'red';
-                ctx.fill();
-                ctx.stroke();
-            </script>
-            <form method = "get" action = "decklist.html">
-                <button type = "submit">Deck 2: Red</button>
-            </form>
+            <div class = "container">
+                <div class = "deck-item">
+                    <canvas id="Deck1" width="50" height="50" style="border: 1px solid #000000"></canvas>
+                    <script>
+                        const ctx = document.getElementById('Deck1').getContext('2d');
+                        ctx.beginPath();
+                        ctx.arc(25, 24, 6, 0, 2 * Math.PI);
+                        ctx.fillStyle = 'blue';
+                        ctx.strokeStyle = 'blue';
+                        ctx.fill();
+                        ctx.stroke();
+                    </script>
+                    <form method = "get" action = "decklist.html">
+                        <button type = "submit">Deck 1: Blue</button>
+                    </form>
+                </div>
+                <div class = "deck-item">
+                    <canvas id="Deck2" width="50" height="50" style="border: 1px solid #000000"></canvas>
+                    <script>
+                        const ctx2 = document.getElementById('Deck2').getContext('2d');
+                        ctx2.beginPath();
+                        ctx2.arc(25, 24, 6, 0, 2 * Math.PI);
+                        ctx2.fillStyle = 'red';
+                        ctx2.strokeStyle = 'red';
+                        ctx2.fill();
+                        ctx2.stroke();
+                    </script>
+                    <form method = "get" action = "decklist.html">
+                        <button type = "submit">Deck 2: Red</button>
+                    </form>
+                </div>
+                
+            </div>
+            
         </main>
         <footer>
             <hr>
