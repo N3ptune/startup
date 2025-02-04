@@ -1,0 +1,27 @@
+.export-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1em;
+    margin-bottom: 1em;
+  }
+
+.deck-list {
+    position: relative;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 40%;
+    height: 40%;
+    margin-top: 20px;
+    top: -60px;
+}
+
+.cards {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+}
