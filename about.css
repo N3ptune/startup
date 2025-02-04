@@ -1,0 +1,15 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-gap: 1em;
+    grid-auto-rows: minmax(200px, auto);
+}
+
+.text {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+}
