@@ -1,8 +1,12 @@
-.container{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-gap: 1em;
-    grid-auto-rows: minmax(200px, auto);
+.chat-box {
+    position: relative;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 40%;
+    margin-top: 20px;
+    left: 500px;
+    top: -300px
 }
 
 .text {
