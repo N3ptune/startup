@@ -1,5 +1,7 @@
 import React from 'react';
 import './lobby.css'
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Draft } from '../draft/draft';
 
 export function Lobby() {
     return (
@@ -22,7 +24,7 @@ export function Lobby() {
                         <td>6/7</td>
                         <td>
                             <form method = "get" action = "draft.html" />
-                            <button className = "join-button">Join</button>
+                            <NavLink className = "nav-link" to = "/draft">Join</NavLink>
                         </td>
                     </tr>
                     <tr>
@@ -31,8 +33,7 @@ export function Lobby() {
                         <td>FDN</td>
                         <td>2/7</td>
                         <td>
-                            <form method = "get" action = "draft.html" />
-                            <button className = "join-button">Join</button>
+                            <NavLink className = "nav-link" to = "/draft">Join</NavLink>
                         </td>
                     </tr>
                     <tr>
@@ -41,9 +42,7 @@ export function Lobby() {
                         <td><input type="text" placeholder="SET" /></td>
                         <td><input type="text" placeholder="?/?" /></td>
                         <td>
-                            <form method = "get" action = "draft.html">
-                                <button className = "create-button">Create</button>
-                            </form>
+                            <NavLink className = "nav-link" to = "/draft">Create</NavLink>
                         </td>
                     </tr>
                 </tbody>

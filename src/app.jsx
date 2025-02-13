@@ -41,6 +41,8 @@ export default function App() {
                 <Route path = "/lobby" element = {<Lobby />} />
                 <Route path = "/decks" element = {<Decks />} />
                 <Route path = "/about" element = {<About />} />
+                <Route path="/decklist" element = {<Decklist />} />
+                <Route path = "/draft" element = {<Draft />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
             </main>
