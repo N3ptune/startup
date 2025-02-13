@@ -37,6 +37,7 @@ export default function App() {
             </header>
             <main className = "main">
             <Routes>
+                <Route path = "/" element = {<Login />} />
                 <Route path = "/login" element = {<Login />} />
                 <Route path = "/lobby" element = {<Lobby />} />
                 <Route path = "/decks" element = {<Decks />} />
