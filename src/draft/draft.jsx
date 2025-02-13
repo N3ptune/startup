@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function Draft() {
     return (
       <main className="container-fluid bg-secondary text-center">
