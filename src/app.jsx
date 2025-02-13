@@ -36,16 +36,14 @@ export default function App() {
                 <hr />
             </header>
             <main className = "main">
-                App components go here
-                <hr />
-            </main>
             <Routes>
-                <Route path = "/" element = {<Login />} exact />
+                <Route path = "/login" element = {<Login />} />
                 <Route path = "/lobby" element = {<Lobby />} />
                 <Route path = "/decks" element = {<Decks />} />
                 <Route path = "/about" element = {<About />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
+            </main>
             <footer>
                 <p>Jason Brooks</p>
                 <a href = "https://github.com/N3ptune/startup?tab=readme-ov-file">GitHub</a>
