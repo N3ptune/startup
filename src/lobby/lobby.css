@@ -61,6 +61,28 @@
     border-radius: 5px;
 }
 
+.dropbtn {
+    background-color: lightgray;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: lightgray;
+    min-width: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
 @media (min-width: 1024px) { 
 
     .main-area {
@@ -81,4 +103,6 @@
     .chat-box {
         max-width: 100%;
     }
+
+    .dropdown:hover .dropdown-content {display: block;}
 }
