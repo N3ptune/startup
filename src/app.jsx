@@ -11,6 +11,8 @@ import { Login } from './login/login';
 
 export default function App() {
     const [user, setUser] = React.useState(localStorage.getItem('user') || null);
+    const [password, setUserPass] = React.useState(localStorage.getItem('password') || null);
+
   return (
     <BrowserRouter> 
         <div className='body'>
@@ -38,8 +40,8 @@ export default function App() {
             </header>
             <main className = "main">
             <Routes>
-                <Route path = "/" element = {<Login setUser={setUser} />} />
-                <Route path = "/login" element = {<Login setUser={setUser}/>} />
+                <Route path = "/" element = {<Login setUser={setUser} setUserPass={setUserPass}/>} />
+                <Route path = "/login" element = {<Login setUser={setUser} setUserPass={setUserPass}/>} />
                 <Route path = "/lobby" element = {<Lobby user = {user}/>} />
                 <Route path = "/decks" element = {<Decks />} />
                 <Route path = "/about" element = {<About />} />

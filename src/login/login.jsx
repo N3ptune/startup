@@ -3,19 +3,27 @@ import './index.css';
 import { Lobby } from '../lobby/lobby';
 import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 
-export function Login({setUser}) {
+export function Login({setUser, setUserPass}) {
     const [name, setName] = React.useState("");
+    const [password, setPassword] = React.useState("");
     const navigate = useNavigate();
 
 
     function loginUser(){
         localStorage.setItem('user', name);
+        localStorage.setItem('password', password)
         setUser(name);
+        setUserPass(password);
         navigate('/lobby');
     }
 
     function nameChange(e){
         setName(e.target.value);
+        console.log(e.target.value);
+    }
+
+    function passwordChange(e){
+        setPassword(e.target.value);
         console.log(e.target.value);
     }
 
@@ -35,11 +43,11 @@ export function Login({setUser}) {
                     <h4>
                         Password
                     </h4>
-                    <input type = "password" placeholder="Password" />
+                    <input type = "password" placeholder="Password" onChange={passwordChange} />
                 </div>
-                {/* <button onClick={loginUser}>Login</button> */}
                 <button type="submit">Login</button>
-                <NavLink className = "nav-link" to = "/lobby">Create</NavLink>
+                <button type="submit">Create</button>
+                
             </form>
             <hr />
         </main>
