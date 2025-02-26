@@ -10,6 +10,7 @@ import { Lobby } from './lobby/lobby';
 import { Login } from './login/login';
 
 export default function App() {
+    const [user, setUser] = React.useState(localStorage.getItem('user') || null);
   return (
     <BrowserRouter> 
         <div className='body'>
@@ -23,10 +24,10 @@ export default function App() {
                             <NavLink className = "nav-link" to = "/login">Login</NavLink>
                         </li>
                         <li className = "nav-item">
-                            <NavLink className = "nav-link" to = "/lobby">Lobby</NavLink>
+                            {user && <NavLink className = "nav-link" to = "/lobby">Lobby</NavLink>}
                         </li>
                         <li className = "nav-item">
-                            <NavLink className = "nav-link" to = "/decks">Decks</NavLink>
+                            { user && <NavLink className = "nav-link" to = "/decks">Decks</NavLink>}
                         </li>
                         <li className = "nav-item">
                             <NavLink className = "nav-link" to = "/about">About</NavLink>
@@ -37,9 +38,9 @@ export default function App() {
             </header>
             <main className = "main">
             <Routes>
-                <Route path = "/" element = {<Login />} />
-                <Route path = "/login" element = {<Login />} />
-                <Route path = "/lobby" element = {<Lobby />} />
+                <Route path = "/" element = {<Login setUser={setUser} />} />
+                <Route path = "/login" element = {<Login setUser={setUser}/>} />
+                <Route path = "/lobby" element = {<Lobby user = {user}/>} />
                 <Route path = "/decks" element = {<Decks />} />
                 <Route path = "/about" element = {<About />} />
                 <Route path="/decklist" element = {<Decklist />} />
