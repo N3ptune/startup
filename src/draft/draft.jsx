@@ -10,21 +10,21 @@ export function Draft() {
                 Pack 1 of 3
             </h1>
             <div className = "container">
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
-                <img alt = "Card" src = "./Card back.webp" width = "275" height = "400" />
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
+                <button><img alt = "Card" src = "./Card back.webp" width = "275" height = "400" /></button>
             </div>
             <br />
             <br />
