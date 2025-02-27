@@ -6,7 +6,7 @@ import { Draft } from '../draft/draft';
 export function Lobby({user}) {
     const [lobbyName, setLobbyName] = React.useState('');
     const [lobbySet, setLobbySet] = React.useState('Set');
-    const [players, setPlayers] = React.useState('');
+    const [players, setPlayers] = React.useState('0');
     const [lobbyNum, setLobbyNum] = React.useState('');
     const navigate = useNavigate();
 
@@ -19,6 +19,7 @@ export function Lobby({user}) {
         console.log("create lobby");
         localStorage.setItem('LName', lobbyName);
         localStorage.setItem('LSet', lobbySet);
+        localStorage.setItem('NumPLayers', players);
         navigate('/draft')
     }
 
@@ -28,6 +29,14 @@ export function Lobby({user}) {
 
     function selectSet(e){
         setLobbySet(e.target.textContent);
+    }
+
+    function choosePlayers(e){
+        setPlayers(e.target.textContent)
+    }
+
+    function showLobbyNum(){
+        // This will show the number of lobby's, need the DB for this
     }
 
     return (
@@ -62,7 +71,7 @@ export function Lobby({user}) {
                         </td>
                     </tr>
                     <tr>
-                        <td><input type="text" placeholder="0" /></td>
+                        <td>3</td>
                         <td><input type="text" placeholder="Mark" onChange={lobbyNameChange}/></td>
                         <td>
                             <div className = "dropdown">
@@ -74,7 +83,16 @@ export function Lobby({user}) {
                                 </div>
                             </div>
                         </td>
-                        <td><input type="text" placeholder="?/?" /></td>
+                        <td>
+                            <div className = "dropdown">
+                                <button class = "dropbtn">{players}</button>
+                                <div class = "dropdown-content">
+                                    <button onClick = {choosePlayers}>6</button>
+                                    <button onClick = {choosePlayers}>7</button>
+                                    <button onClick = {choosePlayers}>8</button>
+                                </div>
+                            </div>
+                        </td>
                         <td>
                             <button onClick={createLobby}>Create</button>
                         </td>
