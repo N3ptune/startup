@@ -9,6 +9,17 @@ export function Lobby({user}) {
     const [players, setPlayers] = React.useState('0');
     const [lobbyNum, setLobbyNum] = React.useState('');
     const navigate = useNavigate();
+    const [msg, setMsg] = React.useState('...listening');
+
+    React.useEffect(() => {
+        setInterval(() => {
+            const names = ['John', 'Mark', 'Paul'];
+            const msgs = ['hello', 'hi', 'hey'];
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomMsg = msgs[Math.floor(Math.random() * msgs.length)];
+            setMsg(`${randomName}: ${randomMsg}`);
+        }, 10000);
+    })
 
     function joinLobby(){
         console.log("join lobby");
@@ -102,10 +113,11 @@ export function Lobby({user}) {
             <div class="chat-box">
                 <h3>Chat</h3>
                 <div className="messages">
-                    <p>Test</p>
-                    <p>Hello</p>
+                    <p>Atreities: Hello!</p>
+                    <p>{msg}</p>
                 </div>
                 <input type="text" placeholder="Type a message" className="message-input" />
+
             </div>
         </main>
     );
