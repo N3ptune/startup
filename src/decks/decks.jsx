@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import './decks.css';
 import { Decklist } from '../decklist/decklist';
 
 export function Decks() {
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const canvas1 = document.getElementById('Deck1');
@@ -35,12 +37,12 @@ export function Decks() {
       <div className="container">
         <div className="deck-item">
           <canvas id="Deck1" width="50" height="50" style={{ border: "1px solid #000000" }}></canvas>
-          <NavLink className = "nav-link" to = "/decklist">Deck 1: Blue</NavLink>
+          <button onClick={() => navigate('/decklist')}>Deck 1: Blue</button>
         </div>
 
         <div className="deck-item">
           <canvas id="Deck2" width="50" height="50" style={{ border: "1px solid #000000" }}></canvas>
-          <NavLink className = "nav-link" to = "/decklist">Deck 2: Red</NavLink>
+          <button onClick={() => navigate('/decklist')}>Deck 2: Red</button>
         </div>
       </div>
       <Routes>
