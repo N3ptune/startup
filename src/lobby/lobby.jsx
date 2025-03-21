@@ -29,7 +29,6 @@ export function Lobby({user}) {
     function createLobby(){
         console.log("create lobby");
         localStorage.setItem('LName', lobbyName);
-        localStorage.setItem('LSet', lobbySet);
         localStorage.setItem('NumPLayers', players);
         navigate('/draft')
     }
