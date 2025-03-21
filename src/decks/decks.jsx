@@ -1,3 +1,7 @@
+// WILL BE GETTING RID OF THIS
+// MAKE THIS INTO AN ERROR PAGE OR SOMETHING
+// ONCE THEY CLOSE THE DECKLIST IT IS GONE FOREVER
+
 import React, { useEffect } from 'react';
 import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import './decks.css';

@@ -26,10 +26,14 @@ export function Lobby({user}) {
         navigate('/draft')
     }
 
-    function createLobby(){
-        console.log("create lobby");
-        localStorage.setItem('LName', lobbyName);
-        localStorage.setItem('NumPLayers', players);
+    async function createLobby(endpoint){
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            body: JSON.stringify({ creatorName: lobbyName, playerNum: players, num: lobbyNum}),
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8'
+            }
+        });
         navigate('/draft')
     }
 
