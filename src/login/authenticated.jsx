@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 
 import './authenticated.css';
 
-export function authenticated(props) {
+export function Authenticated(props) {
     const navigate = useNavigate();
 
     function logout(){
