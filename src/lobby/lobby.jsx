@@ -29,6 +29,7 @@ export function Lobby({user}) {
     async function createLobby(endpoint){
         const response = await fetch(endpoint, {
             method: 'POST',
+            // What if I just got rid of the lobbyNum altogether?
             body: JSON.stringify({ creatorName: lobbyName, playerNum: players, num: lobbyNum}),
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8'
@@ -51,6 +52,7 @@ export function Lobby({user}) {
 
     function showLobbyNum(){
         // This will show the number of lobby's, need the DB for this
+        // Might be getting right of this
     }
 
     return (
