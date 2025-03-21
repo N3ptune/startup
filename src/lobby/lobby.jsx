@@ -60,49 +60,36 @@ export function Lobby({user}) {
         <table className = "custom-table">
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>Name</th>
-                        <th>Set</th>
                         <th>Players</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
                         <td>John</td>
-                        <td>LTR</td>
-                        <td>6/7</td>
+                        <td>5</td>
                         <td>
                             <button onClick={joinLobby}>Join</button>
                         </td>
                     </tr>
                     <tr>
-                        <td>2</td>
                         <td>Adam</td>
-                        <td>FDN</td>
-                        <td>2/7</td>
+                        <td>3</td>
                         <td>
                             <button onClick={joinLobby}>Join</button>
                         </td>
                     </tr>
                     <tr>
-                        <td>3</td>
                         <td><input type="text" placeholder="Mark" onChange={lobbyNameChange}/></td>
-                        <td>
-                            <div className = "dropdown">
-                                <button class = "dropbtn">{lobbySet}</button>
-                                <div class = "dropdown-content">
-                                    <button onClick = {selectSet}>LTR</button>
-                                    <button onClick = {selectSet}>IXA</button>
-                                    <button onClick = {selectSet}>STX</button>
-                                </div>
-                            </div>
-                        </td>
                         <td>
                             <div className = "dropdown">
                                 <button class = "dropbtn">{players}</button>
                                 <div class = "dropdown-content">
+                                    <button onClick = {choosePlayers}>2</button>
+                                    <button onClick = {choosePlayers}>3</button>
+                                    <button onClick = {choosePlayers}>4</button>
+                                    <button onClick = {choosePlayers}>5</button>
                                     <button onClick = {choosePlayers}>6</button>
                                     <button onClick = {choosePlayers}>7</button>
                                     <button onClick = {choosePlayers}>8</button>
