@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import {MessageDialogue} from './messageDialogue';
 
 export function unauthenticated(props){
+    const navigate = useNavigate();
     const [name, setName] = React.useState(props.userName);
     const [password, setPassword] = React.useState("");
     const [displayError, setDisplayError] = React.useState(null);
@@ -39,10 +41,10 @@ export function unauthenticated(props){
         <div className="input-group mb-3">
             <input className="form-control" type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="password" />
         </div>
-        <Button onClick={() => loginUser()} disabled={!name || !password}>
+        <Button onClick={() => {login(); navigate('/lobby');}} disabled={!name || !password}>
             Login
         </Button>
-        <Button onClick={() => createUser()} disabled={!name || !password}>
+        <Button onClick={() => {create(); navigate('/lobby');}} disabled={!name || !password}>
           Create
         </Button>
 
