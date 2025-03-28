@@ -1,5 +1,5 @@
 export async function fetchCards(setCode){
-    const response = await fetch(`/api/cards/${setCode}`, {
+    const response = await fetch(`https://api.scryfall.com/sets/${setCode}`, {
 
         headers:{
             "User-Agent": "MTGDraftApp/1.0",
