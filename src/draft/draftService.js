@@ -1,9 +1,12 @@
 export async function fetchCards(setCode){
-    const response = await fetch(`https://api.scryfall.com/sets/${setCode}`, {
+
+    const response = await fetch(`https://api.scryfall.com/cards/search?q=e%3Altr`, {
+        method: 'GET',
 
         headers:{
-            "User-Agent": "MTGDraftApp/1.0",
-            "Accept": "application/json, charset=UTF-8"
+        //     // "User-Agent": "MTGDraftApp/1.0",
+        "Accept": "application/json;q=0.9,*/*;q=0.8",
+        "Origin": window.location.origin
         }
     });
 

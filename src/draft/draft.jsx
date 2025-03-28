@@ -4,7 +4,7 @@ import { fetchCards, getRandomPack} from './draftService';
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
-export function Draft(setCode) {
+export function Draft() {
     const [decklist, setDecklist] = useState([]);
     const initialPack = Array.from({ length: 15 }, (_, i) => ({ id: i + 1 }));
     const [pack, setPack] = useState(initialPack);
@@ -13,13 +13,14 @@ export function Draft(setCode) {
 
     useEffect(() => {
         function generatePack() {
+            const setCode = "ltr";
             fetchCards(setCode).then(cards => {
                 const pack = getRandomPack(cards);
                 setPack(pack);
             });
         }
         generatePack();
-    }, [setCode]);
+    }, [packNum]);
 
     function pickCard(index) {
         const selected = pack[index];
