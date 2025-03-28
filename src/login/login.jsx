@@ -8,10 +8,17 @@ export function Login({name, authState, onAuthChange}) {
   return (
     <main>
         <div>
-            {authState !== authState.Unknown && <h1>Welcome to DraftMagic</h1>}
-            {authState === authState.Authenticated && (< Authenticated name = {name} onLogout = {()=>onAuthChange(name, AuthState.Unauthenticated)} />
+            {authState !== AuthState.Unknown && <h1>Welcome to DraftMagic</h1>}
+            {authState === AuthState.Authenticated && 
+            (< Authenticated name = {name} onLogout = {()=>onAuthChange(name, AuthState.Unauthenticated)} />
         )}
-            {authState === authState.Unauthenticated && ( <Unauthenticated name = {name} onLogin = {(loginName) => {onAuthChange(loginName, AuthState.Authenticated);}}/>
+            {authState === AuthState.Unauthenticated && 
+            ( <Unauthenticated 
+              name = {name} 
+              onLogin = {(loginName) => {
+                onAuthChange(loginName, AuthState.Authenticated);
+              }}
+              />
         )}
         </div>
     </main>

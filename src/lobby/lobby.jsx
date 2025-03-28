@@ -84,8 +84,8 @@ export function Lobby({user}) {
                         <td><input type="text" placeholder="Mark" onChange={lobbyNameChange}/></td>
                         <td>
                             <div className = "dropdown">
-                                <button class = "dropbtn">{players}</button>
-                                <div class = "dropdown-content">
+                                <button className = "dropbtn">{players}</button>
+                                <div className = "dropdown-content">
                                     <button onClick = {choosePlayers}>2</button>
                                     <button onClick = {choosePlayers}>3</button>
                                     <button onClick = {choosePlayers}>4</button>
@@ -102,7 +102,7 @@ export function Lobby({user}) {
                     </tr>
                 </tbody>
             </table>
-            <div class="chat-box">
+            <div className="chat-box">
                 <h3>Chat</h3>
                 <div className="messages">
                     <p>Atreities: Hello!</p>

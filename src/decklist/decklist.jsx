@@ -27,7 +27,7 @@ export function Decklist() {
                 <button type = "button" onClick={copyToClipboard}>MTGO</button>
                 <button type = "button" onClick={copyToClipboard}>MTGA</button>
             </div>
-            <div class = "deck-list">
+            <div className = "deck-list">
                 <h1>
                     Cards
                 </h1>

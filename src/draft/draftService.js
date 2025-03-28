@@ -1,5 +1,6 @@
 export async function fetchCards(setCode){
-    const response = await fetch(`https://api.scryfall.com/cards/search?q=set:${setCode}`, {
+    const response = await fetch(`/api/cards/${setCode}`, {
+
         headers:{
             "User-Agent": "MTGDraftApp/1.0",
             "Accept": "application/json, charset=UTF-8"

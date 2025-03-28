@@ -1,40 +1,40 @@
-import React from 'react';
 import './draft.css';
-import {useNavigate} from 'react-router-dom';
-import useState from 'react';
-import {fetchCards, getRandomPack} from "./draftService.js";
+import { fetchCards, getRandomPack} from './draftService';
+
+import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 export function Draft(setCode) {
-    const [decklist, setDecklist] = React.useState([]);
-    // const initialPack = Array.from({length: 15}, (_, i) => ({id: i + 1}))
-    const [pack, setPack] = React.useState(initialPack);
-    const [packNum, setPackNum] = React.useState(1);
+    const [decklist, setDecklist] = useState([]);
+    const initialPack = Array.from({ length: 15 }, (_, i) => ({ id: i + 1 }));
+    const [pack, setPack] = useState(initialPack);
+    const [packNum, setPackNum] = useState(1);
     const navigate = useNavigate();
 
     useEffect(() => {
-        async function generatePack() {
-            const cards = await fetchCards(setCode)
-            const pack = getRandomPack(cards);
-            setPack(pack)
+        function generatePack() {
+            fetchCards(setCode).then(cards => {
+                const pack = getRandomPack(cards);
+                setPack(pack);
+            });
         }
         generatePack();
-        });
+    }, [setCode]);
 
-    function pickCard(index){
+    function pickCard(index) {
         const selected = pack[index];
         const updatedDecklist = [...decklist, selected];
         setDecklist(updatedDecklist);
         localStorage.setItem('decklist', JSON.stringify(updatedDecklist));
         setPack(pack.filter((_, i) => i !== index));
-        if (pack.length === 1){
-            if (packNum < 3){
-                const newPack = Array.from({length: 15}, (_, i) => ({id: i + 1}))
+        if (pack.length === 1) {
+            if (packNum < 3) {
+                const newPack = Array.from({ length: 15 }, (_, i) => ({ id: i + 1 }));
                 setPack(newPack);
                 setPackNum(packNum + 1);
             }
         }
     }
-    
 
     return (
         <main>

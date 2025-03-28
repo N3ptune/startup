@@ -8,10 +8,12 @@ import { Decks } from './decks/decks';
 import { Draft } from './draft/draft';
 import { Lobby } from './lobby/lobby';
 import { Login } from './login/login';
+import { AuthState } from './login/authState';
 
 export default function App() {
     const [user, setUser] = React.useState(localStorage.getItem('user') || null);
-    const [password, setUserPass] = React.useState(localStorage.getItem('password') || null);
+    const currentAuthState = user ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [authState, setAuthState] = React.useState(currentAuthState);
 
   return (
     <BrowserRouter> 
@@ -25,12 +27,9 @@ export default function App() {
                         <li className = "nav-item">
                             <NavLink className = "nav-link" to = "/login">Login</NavLink>
                         </li>
-                        <li className = "nav-item">
-                            {user && <NavLink className = "nav-link" to = "/lobby">Lobby</NavLink>}
-                        </li>
-                        <li className = "nav-item">
-                            { user && <NavLink className = "nav-link" to = "/decks">Decks</NavLink>}
-                        </li>
+                        {authState === AuthState.Authenticated && (<li className = "nav-item">
+                            <NavLink className = "nav-link" to = "/lobby">Lobby</NavLink>
+                        </li>)}
                         <li className = "nav-item">
                             <NavLink className = "nav-link" to = "/about">About</NavLink>
                         </li>
@@ -40,13 +39,21 @@ export default function App() {
             </header>
             <main className = "main">
             <Routes>
-                <Route path = "/" element = {<Login setUser={setUser} setUserPass={setUserPass}/>} />
-                <Route path = "/login" element = {<Login setUser={setUser} setUserPass={setUserPass}/>} />
+                <Route path = "/login" element = {
+                    <Login user={user} 
+                    authState={authState}
+                    onAuthChange={(user, authState) => {
+                        setAuthState(authState)
+                        setUser(user)
+                    }}/>} exact />
+                {/* <Route path = "/login" element = {<Login setUser={setUser} setUserPass={setUserPass}/>} /> */}
                 <Route path = "/lobby" element = {<Lobby user = {user}/>} />
                 <Route path = "/decks" element = {<Decks />} />
                 <Route path = "/about" element = {<About />} />
                 <Route path="/decklist" element = {<Decklist />} />
-                <Route path = "/draft" element = {<Draft />} />
+                <Route path = "/draft" element = {<Draft setCode="ltr" />} />
+
+
                 <Route path='*' element={<NotFound />} />
             </Routes>
             </main>
