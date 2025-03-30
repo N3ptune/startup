@@ -16,7 +16,31 @@ export async function fetchCards(setCode){
     }
 }
 
-export function getRandomPack(cards){
-    const shuffled = [...cards].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0,15);
+export function getRandomPack(cards) {
+    const commons = cards.filter(card => card.rarity === "common" && !card.type_line.toLowerCase().includes("land"));
+    const uncommons = cards.filter(card => card.rarity === "uncommon");
+    const rares = cards.filter(card => card.rarity === "rare");
+    const mythics = cards.filter(card => card.rarity === "mythic");
+    const lands = cards.filter(card => card.type_line.toLowerCase().includes("land"));
+    
+    
+    const getRandomCards = (cardArray, count) => {
+        const shuffled = [...cardArray].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+    };
+    
+    const packCommons = getRandomCards(commons, 10);
+    
+    const packUncommons = getRandomCards(uncommons, 3);
+    
+    let packRare;
+    if (Math.random() < 0.125 && mythics.length > 0) {
+        packRare = getRandomCards(mythics, 1);
+    } else {
+        packRare = getRandomCards(rares, 1);
+    }
+    
+    const packLand = getRandomCards(lands, 1);
+    
+    return [...packCommons, ...packUncommons, ...packRare, ...packLand];
 }
