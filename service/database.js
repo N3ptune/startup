@@ -32,9 +32,15 @@ const userCollection = db.collection('user');
     await userCollection.updateOne({ email: user.email }, { $set: user });
   }
 
+  async function sendDeck(deck){
+    const deckCollection = db.collection('deck');
+    await deckCollection.insertOne(deck);
+  }
+
   module.exports = {
     getUser,
     getUserByToken,
     addUser,
     updateUser,
+    sendDeck
   };
