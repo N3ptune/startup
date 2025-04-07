@@ -5,6 +5,7 @@ const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
 
+
 const authCookieName = 'token';
 
 let users = [];
@@ -117,7 +118,7 @@ app.use((_req, res) => {
 app.post('/api/deck', async (req, res) => {
     try {
         const deck = req.body;
-        await DB.collection('deck').insertOne(deck);
+        await DB.sendDeck(deck)
         res.status(201).json({ message: 'Deck saved successfully' });
     } catch (err) {
         console.error(err);
