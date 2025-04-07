@@ -111,11 +111,6 @@ app.use(function (err, req, res, next) {
     res.status(500).send({ type: err.name, message: err.message });
 });
 
-// Return the application's default page if the path is unknown
-app.use((_req, res) => {
-    res.sendFile('index.html', { root: 'public' });
-});
-
 app.post('/api/deck', async (req, res) => {
     try {
         const deck = req.body;
@@ -126,6 +121,13 @@ app.post('/api/deck', async (req, res) => {
         res.status(500).json({ error: 'Failed to save deck' });
     }
 });
+
+// Return the application's default page if the path is unknown
+app.use((_req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+});
+
+
 
 function updateDecks(newDeck){
     // NO LONGER NEEDED

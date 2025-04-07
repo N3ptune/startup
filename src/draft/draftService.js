@@ -17,7 +17,7 @@ export async function fetchCards(setCode){
 }
 
 export async function sendDeck(deck) {
-    const response = await fetch('http://localhost:3001/api/deck', {
+    const response = await fetch('/api/deck', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

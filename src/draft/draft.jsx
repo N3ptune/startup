@@ -25,7 +25,8 @@ export function Draft() {
 
     function pickCard(index) {
         const selected = pack[index];
-        const updatedDecklist = [...decklist, selected];
+        const cardName = selected.name;
+        const updatedDecklist = [...decklist, cardName];
         setDecklist(updatedDecklist);
         localStorage.setItem('decklist', JSON.stringify(updatedDecklist));
         setPack(pack.filter((_, i) => i !== index));

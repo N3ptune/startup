@@ -34,7 +34,7 @@ export function Decklist() {
                 <div className = "cards">
                     {decklistArray.map((card, index) => (
                         <div key = {index}>
-                            <p>{card.name}</p>
+                            <p>{card}</p>
                         </div>
                     ))}
                 </div>

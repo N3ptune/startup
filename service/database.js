@@ -3,9 +3,9 @@ const config = require('./dbConfig.json');
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
-const db = client.db('MTGDraft');
+const db = client.db('draftmagic');
 const userCollection = db.collection('user');
-const deckCollection = db.collection('deck');
+const deckCollections = db.collection('deck');
 
 (async function testConnection() {
     try {
@@ -34,8 +34,7 @@ const deckCollection = db.collection('deck');
   }
 
   async function sendDeck(deck){
-    const deckCollection = db.collection('deck');
-    await deckCollection.insertOne(deck);
+    await deckCollections.insertOne(deck);
   }
 
   module.exports = {
