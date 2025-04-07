@@ -14,6 +14,10 @@ export function Decklist() {
         setCopied(true);
         setTimeout(() => { setCopied(false);}, 5000);
     }
+
+    // function displayDecks(deck){
+    //     for deck in database: do display from below
+    // }
     
 
 

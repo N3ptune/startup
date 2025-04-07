@@ -37,6 +37,10 @@ const deckCollections = db.collection('deck');
     await deckCollections.insertOne(deck);
   }
 
+  async function getDeck(deck, user, date){
+    return deckCollections.findOne(deck);
+  }
+
   module.exports = {
     getUser,
     getUserByToken,
