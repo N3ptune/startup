@@ -5,6 +5,7 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('MTGDraft');
 const userCollection = db.collection('user');
+const deckCollection = db.collection('deck');
 
 (async function testConnection() {
     try {

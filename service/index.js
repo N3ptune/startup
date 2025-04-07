@@ -30,6 +30,7 @@ apiRouter.post('/lobby/create', async (req, res) => {
 
 // Creates a user
 apiRouter.post('/auth/create', async (req, res) => {
+    console.log('1')
     if (await findUser('email', req.body.email)) {
         res.status(409).send({msg: 'Existing User'})
     } else {
