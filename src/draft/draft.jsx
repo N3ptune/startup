@@ -1,5 +1,6 @@
 import './draft.css';
 import { fetchCards, getRandomPack} from './draftService';
+import { sendDeck } from './draftService';
 
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
@@ -49,7 +50,19 @@ export function Draft() {
             </div>
             <br />
             <br />
-            <button className="Decklist" onClick={() => navigate('/decklist')}>Save</button>
+            <button
+    className="Decklist"
+    onClick={async () => {
+            const deck = {
+                cards: decklist,
+            };
+            await sendDeck(deck);
+            navigate('/decklist');
+
+    }}
+>
+    Save
+</button>
         </main>
     );
 }

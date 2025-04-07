@@ -16,6 +16,20 @@ export async function fetchCards(setCode){
     }
 }
 
+export async function sendDeck(deck) {
+    const response = await fetch('http://localhost:3001/api/deck', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(deck)
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to save deck');
+    }
+}
+
 export function getRandomPack(cards) {
     const commons = cards.filter(card => card.rarity === "common" && !card.type_line.toLowerCase().includes("land"));
     const uncommons = cards.filter(card => card.rarity === "uncommon");

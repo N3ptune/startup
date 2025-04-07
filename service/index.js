@@ -114,6 +114,17 @@ app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
 });
 
+app.post('/api/deck', async (req, res) => {
+    try {
+        const deck = req.body;
+        await DB.collection('deck').insertOne(deck);
+        res.status(201).json({ message: 'Deck saved successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to save deck' });
+    }
+});
+
 function updateDecks(newDeck){
     // NO LONGER NEEDED
 }
