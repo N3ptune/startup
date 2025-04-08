@@ -1,9 +1,17 @@
 const { WebSocketServer, WebSocket } = require('ws');
 
-
 function peerProxy(httpServer) {
-  // Create a websocket object
-  const socketServer = new WebSocketServer({ server: httpServer });
+  // Cleanup interval reference
+  let interval;
+  // Create websocket server
+  const socketServer = new WebSocketServer({ noServer: true });
+
+  // Handle upgrade from HTTP to WebSocket
+  httpServer.on('upgrade', (request, socket, head) => {
+    socketServer.handleUpgrade(request, socket, head, (socket) => {
+      socketServer.emit('connection', socket, request);
+    });
+  });
 
   socketServer.on('connection', (socket) => {
     socket.isAlive = true;
@@ -24,7 +32,7 @@ function peerProxy(httpServer) {
   });
 
   // Periodically send out a ping message to make sure clients are alive
-  setInterval(() => {
+  interval = setInterval(() => {
     socketServer.clients.forEach(function each(client) {
       if (client.isAlive === false) return client.terminate();
 
@@ -32,6 +40,15 @@ function peerProxy(httpServer) {
       client.ping();
     });
   }, 10000);
+
+  // Cleanup on server close
+  httpServer.on('close', () => {
+    clearInterval(interval);
+    socketServer.clients.forEach(client => client.terminate());
+    socketServer.close();
+  });
+
+  return socketServer;
 }
 
 module.exports = { peerProxy };
