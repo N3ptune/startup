@@ -10,22 +10,28 @@ export function Draft() {
     const initialPack = Array.from({ length: 15 }, (_, i) => ({ id: i + 1 }));
     const [pack, setPack] = useState(initialPack);
     const [packNum, setPackNum] = useState(1);
+    const [pickNum, setPickNum] = useState(0);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        function generatePack(count = 15) {
-            const setCode = "ltr";
-            fetchCards(setCode).then(cards => {
-                const pack = getRandomPack(cards, count);
-                setPack(pack);
-            });
+    const generatePack = async (count = 15) => {
+        const setCode = "ltr";
+        try {
+            const cards = await fetchCards(setCode);
+            const newPack = getRandomPack(cards, count);
+            setPack(newPack);
+        } catch (error) {
+            console.error("Error generating pack:", error);
         }
+    };
+
+    useEffect(() => {
         generatePack();
     }, [packNum]);
 
     function pickCard(index) {
         const selected = pack[index];
         const cardName = selected.name;
+        
         const updatedDecklist = [...decklist, cardName];
         setDecklist(updatedDecklist);
         localStorage.setItem('decklist', JSON.stringify(updatedDecklist));
@@ -33,19 +39,20 @@ export function Draft() {
         const newPack = pack.filter((_, i) => i !== index);
         setPack(newPack);
         
-        if (packNum < 3) {
-
-            const picksInCurrentPack = decklist.length % 15;
-            const picksRemaining = 15 - picksInCurrentPack;
-            
-            if (picksRemaining > 0) {
-                generatePack(picksRemaining - 1);
-            } else {
+        const newPickNum = pickNum + 1;
+        setPickNum(newPickNum);
+        
+        if (newPickNum >= 15) {
+            if (packNum < 3) {
                 setPackNum(packNum + 1);
-                generatePack(15);
+                setPickNum(0);
+            } else {
+                setPack([]);
+                console.log("Draft complete!");
             }
         } else {
-            setPack([]);
+            const cardsRemaining = 15 - newPickNum;
+            generatePack(cardsRemaining);
         }
     }
 

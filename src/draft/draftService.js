@@ -37,39 +37,51 @@ export function getRandomPack(cards, totalCount = 15) {
     const mythics = cards.filter(card => card.rarity === "mythic");
     const lands = cards.filter(card => card.type_line.toLowerCase().includes("land"));
 
-    let commonCount, uncommonCount, rareCount, landCount;
-    
-    if (totalCount === 15) {
+    let commonCount = 0, uncommonCount = 0, rareCount = 0, landCount = 0;
+
+    if (totalCount >= 15) {
         commonCount = 10;
         uncommonCount = 3;
         rareCount = 1;
         landCount = 1;
     } else {
-        const ratio = totalCount / 15;
-        commonCount = Math.max(1, Math.round(10 * ratio));
-        uncommonCount = Math.max(1, Math.round(3 * ratio));
-        rareCount = 1;
-        landCount = Math.max(0, totalCount - commonCount - uncommonCount - rareCount);
+        const ratios = {
+            common: 10,
+            uncommon: 3,
+            rare: 1,
+            land: 1
+        };
+        const totalRatio = Object.values(ratios).reduce((a, b) => a + b, 0);
+
+        const allocate = (key) => Math.floor((ratios[key] / totalRatio) * totalCount);
+        commonCount = allocate("common");
+        uncommonCount = allocate("uncommon");
+        rareCount = allocate("rare");
+        landCount = allocate("land");
+
+        let used = commonCount + uncommonCount + rareCount + landCount;
+        while (used < totalCount) {
+            commonCount++;
+            used++;
+        }
     }
-    
-    
+
     const getRandomCards = (cardArray, count) => {
         const shuffled = [...cardArray].sort(() => 0.5 - Math.random());
         return shuffled.slice(0, count);
     };
-    
+
     const packCommons = getRandomCards(commons, commonCount);
-    
     const packUncommons = getRandomCards(uncommons, uncommonCount);
-    
+
     let packRare;
     if (Math.random() < 0.125 && mythics.length > 0) {
         packRare = getRandomCards(mythics, rareCount);
     } else {
         packRare = getRandomCards(rares, rareCount);
     }
-    
+
     const packLand = getRandomCards(lands, landCount);
-    
+
     return [...packCommons, ...packUncommons, ...packRare, ...packLand];
 }
