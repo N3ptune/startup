@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { About } from './about/about';
 import { Decklist } from './decklist/decklist';
 import { Decks } from './decks/decks';
@@ -10,23 +10,25 @@ import { Lobby } from './lobby/lobby';
 import { Login } from './login/login';
 import { AuthState } from './login/authState';
 
-function logout() {
-    fetch(`/api/auth/logout`, {
-      method: 'delete',
-    })
-      .catch(() => {
-        // Logout failed. Assuming offline
-      })
-      .finally(() => {
-        localStorage.removeItem('userName');
-        props.onLogout();
-      });
-  }
+
 
 export default function App() {
     const [user, setUser] = React.useState(localStorage.getItem('user') || null);
     const currentAuthState = user ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
+
+    function logout() {
+        fetch(`/api/auth/logout`, {
+          method: 'delete',
+        })
+          .catch(() => {
+            // Logout failed. Assuming offline
+          })
+          .finally(() => {
+            localStorage.removeItem('user');
+            setAuthState(AuthState.Unauthenticated);
+          });
+      }
 
   return (
     <BrowserRouter> 
@@ -46,9 +48,10 @@ export default function App() {
                         <li className = "nav-item">
                             <NavLink className = "nav-link" to = "/about">About</NavLink>
                         </li>
-                            {authState === AuthState.Authenticated && (<li className = "nav-item">
-                                <button onClick={(logout())}>Logout</button>
-                            </li>)}
+                        {authState === AuthState.Authenticated && (<li className='nav-item'>
+                            <NavLink className="nav-link" to="/login" onClick={logout}>Logout</NavLink>
+                        </li>)}
+                        
                     </menu>
                 </nav>
                 <hr />
