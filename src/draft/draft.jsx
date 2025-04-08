@@ -13,10 +13,10 @@ export function Draft() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        function generatePack() {
+        function generatePack(count = 15) {
             const setCode = "ltr";
             fetchCards(setCode).then(cards => {
-                const pack = getRandomPack(cards);
+                const pack = getRandomPack(cards, count);
                 setPack(pack);
             });
         }
@@ -29,13 +29,23 @@ export function Draft() {
         const updatedDecklist = [...decklist, cardName];
         setDecklist(updatedDecklist);
         localStorage.setItem('decklist', JSON.stringify(updatedDecklist));
-        setPack(pack.filter((_, i) => i !== index));
-        if (pack.length === 1) {
-            if (packNum < 3) {
-                const newPack = Array.from({ length: 15 }, (_, i) => ({ id: i + 1 }));
-                setPack(newPack);
+        
+        const newPack = pack.filter((_, i) => i !== index);
+        setPack(newPack);
+        
+        if (packNum < 3) {
+
+            const picksInCurrentPack = decklist.length % 15;
+            const picksRemaining = 15 - picksInCurrentPack;
+            
+            if (picksRemaining > 0) {
+                generatePack(picksRemaining - 1);
+            } else {
                 setPackNum(packNum + 1);
+                generatePack(15);
             }
+        } else {
+            setPack([]);
         }
     }
 
