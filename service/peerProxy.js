@@ -16,13 +16,22 @@ function peerProxy(httpServer) {
   socketServer.on('connection', (socket) => {
     socket.isAlive = true;
 
-    // Forward messages to everyone except the sender
+    // Forward messages to all connected clients
     socket.on('message', function message(data) {
-      socketServer.clients.forEach((client) => {
-        if (client !== socket && client.readyState === WebSocket.OPEN) {
-          client.send(data);
+      try {
+        // Verify the message is valid JSON
+        const msg = JSON.parse(data);
+        if (msg.name && msg.message) {
+          // Broadcast to all connected clients
+          socketServer.clients.forEach((client) => {
+            if (client.readyState === WebSocket.OPEN) {
+              client.send(data);
+            }
+          });
         }
-      });
+      } catch (err) {
+        console.error('Invalid message format:', err);
+      }
     });
 
     // Respond to pong messages by marking the connection alive
