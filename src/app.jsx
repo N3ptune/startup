@@ -10,6 +10,19 @@ import { Lobby } from './lobby/lobby';
 import { Login } from './login/login';
 import { AuthState } from './login/authState';
 
+function logout() {
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+        // Logout failed. Assuming offline
+      })
+      .finally(() => {
+        localStorage.removeItem('userName');
+        props.onLogout();
+      });
+  }
+
 export default function App() {
     const [user, setUser] = React.useState(localStorage.getItem('user') || null);
     const currentAuthState = user ? AuthState.Authenticated : AuthState.Unauthenticated;
@@ -33,6 +46,9 @@ export default function App() {
                         <li className = "nav-item">
                             <NavLink className = "nav-link" to = "/about">About</NavLink>
                         </li>
+                            {authState === AuthState.Authenticated && (<li className = "nav-item">
+                                <button onClick={(logout())}>Logout</button>
+                            </li>)}
                     </menu>
                 </nav>
                 <hr />
