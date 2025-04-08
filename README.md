@@ -119,28 +119,28 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Installed express
+- [x] **Static middleware for frontend** - Made simple endpoints in service
+- [x] **Calls to third party endpoints** - Called scryfall API
+- [x] **Backend service endpoints** - All endpoints made
+- [x] **Frontend calls service endpoints** - frontend mocks removed, replaced with real calls
 
 ## 🚀 DB/Login deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **User registration** - I did not complete this part of the deliverable.
-- [ ] **User login and logout** - I did not complete this part of the deliverable.
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Restricts functionality based on authentication** - I did not complete this part of the deliverable.
+- [x] **User registration** - Stores users in db
+- [x] **User login and logout** - Implemented db login and logout
+- [x] **Stores data in MongoDB** - Deck data stored in db
+- [x] **Stores credentials in MongoDB** - User data stored in db
+- [x] **Restricts functionality based on authentication** - Auth access checked
 
 ## 🚀 WebSocket deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - Backend listens for ws
+- [x] **Frontend makes WebSocket connection** - Chatbox implements ws
+- [x] **Data sent over WebSocket connection** - Ws works over clients
+- [x] **WebSocket data displayed** - Ws data displayed
+- [x] **Application is fully functional** - Everything works!
