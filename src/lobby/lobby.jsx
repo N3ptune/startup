@@ -123,7 +123,7 @@ export function Lobby({ user }) {
 
   return (
     <main className="main-area">
-              <button onClick={createLobby}>Draft!</button>
+              <button onClick={joinLobby}>Draft!</button>
       <div className="chat-box">
         <h3>Chat {connected ? '(Connected)' : '(Disconnected)'}</h3>
         <div className="messages">
