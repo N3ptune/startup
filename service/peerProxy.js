@@ -1,37 +1,19 @@
-const { WebSocketServer, WebSocket } = require('ws');
+const { WebSocketServer } = require('ws');
 
 function peerProxy(httpServer) {
-  // Cleanup interval reference
-  let interval;
-  // Create websocket server
-  const socketServer = new WebSocketServer({ noServer: true });
-
-  // Handle upgrade from HTTP to WebSocket
-  httpServer.on('upgrade', (request, socket, head) => {
-    socketServer.handleUpgrade(request, socket, head, (socket) => {
-      socketServer.emit('connection', socket, request);
-    });
-  });
+  // Create a websocket object
+  const socketServer = new WebSocketServer({ server: httpServer });
 
   socketServer.on('connection', (socket) => {
     socket.isAlive = true;
 
-    // Forward messages to all connected clients
+    // Forward messages to everyone except the sender
     socket.on('message', function message(data) {
-      try {
-        // Verify the message is valid JSON
-        const msg = JSON.parse(data);
-        if (msg.name && msg.message) {
-          // Broadcast to all connected clients
-          socketServer.clients.forEach((client) => {
-            if (client.readyState === WebSocket.OPEN) {
-              client.send(data);
-            }
-          });
+      socketServer.clients.forEach((client) => {
+        if (client !== socket && client.readyState === WebSocket.OPEN) {
+          client.send(data);
         }
-      } catch (err) {
-        console.error('Invalid message format:', err);
-      }
+      });
     });
 
     // Respond to pong messages by marking the connection alive
@@ -41,7 +23,7 @@ function peerProxy(httpServer) {
   });
 
   // Periodically send out a ping message to make sure clients are alive
-  interval = setInterval(() => {
+  setInterval(() => {
     socketServer.clients.forEach(function each(client) {
       if (client.isAlive === false) return client.terminate();
 
@@ -49,15 +31,6 @@ function peerProxy(httpServer) {
       client.ping();
     });
   }, 10000);
-
-  // Cleanup on server close
-  httpServer.on('close', () => {
-    clearInterval(interval);
-    socketServer.clients.forEach(client => client.terminate());
-    socketServer.close();
-  });
-
-  return socketServer;
 }
 
 module.exports = { peerProxy };
