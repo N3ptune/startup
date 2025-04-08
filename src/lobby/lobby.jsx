@@ -123,52 +123,7 @@ export function Lobby({ user }) {
 
   return (
     <main className="main-area">
-      <table className="custom-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Players</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>John</td>
-            <td>5</td>
-            <td>
-              <button onClick={joinLobby}>Join</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Adam</td>
-            <td>3</td>
-            <td>
-              <button onClick={joinLobby}>Join</button>
-            </td>
-          </tr>
-          <tr>
-            <td><input type="text" placeholder="Mark" onChange={lobbyNameChange} /></td>
-            <td>
-              <div className="dropdown">
-                <button className="dropbtn">{players}</button>
-                <div className="dropdown-content">
-                  <button onClick={choosePlayers}>2</button>
-                  <button onClick={choosePlayers}>3</button>
-                  <button onClick={choosePlayers}>4</button>
-                  <button onClick={choosePlayers}>5</button>
-                  <button onClick={choosePlayers}>6</button>
-                  <button onClick={choosePlayers}>7</button>
-                  <button onClick={choosePlayers}>8</button>
-                </div>
-              </div>
-            </td>
-            <td>
-              <button onClick={createLobby}>Create</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      
+              <button onClick={createLobby}>Draft!</button>
       <div className="chat-box">
         <h3>Chat {connected ? '(Connected)' : '(Disconnected)'}</h3>
         <div className="messages">
